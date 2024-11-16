@@ -1,7 +1,7 @@
 # This workflow will build a Java project with Maven
 # For more information see: https://help.github.com/actions/language-and-framework-guides/building-and-testing-java-with-maven
 
-name: Sonar-Codecov
+name: SonarQube Cloud
 
 on:
   push:
@@ -75,12 +75,12 @@ jobs:
           restore-keys: ${{ runner.os }}-m2-
       - name: SonarCloud Report
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          SONAR_TOKEN: ${{ secrets.SONARCLOUD_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: |
           mvn -B -P with-integration-tests,with-code-coverage verify sonar:sonar \
           -Dsonar.organization=apache \
-          -Dsonar.projectKey=apache_iotdb \
+          -Dsonar.projectKey=mugheesahmad16_iotdb \
           -Dsonar.host.url=https://sonarcloud.io \
           -Dsonar.token=${{ secrets.SONARCLOUD_TOKEN }} \
           -DskipTests -pl '!distribution,!integration-test' -am

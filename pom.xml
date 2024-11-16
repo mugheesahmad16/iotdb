@@ -1423,6 +1423,8 @@
                 </os>
             </activation>
             <properties>
+                <sonar.organization>mugheesahmad16</sonar.organization>
+                <sonar.host.url>https://sonarcloud.io</sonar.host.url>
                 <cmake.generator>Unix Makefiles</cmake.generator>
                 <os.classifier>linux-x86_64</os.classifier>
                 <thrift.executable>thrift</thrift.executable>
@@ -1589,6 +1591,11 @@
             </properties>
             <build>
                 <plugins>
+                <plugin>
+<groupId>org.sonarsource.scanner.maven</groupId>
+<artifactId>sonar-maven-plugin</artifactId>
+<version>3.9.1.2184</version>
+</plugin>
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-dependency-plugin</artifactId>
